@@ -1,0 +1,17 @@
+<launch>
+    
+    <!--Start follower node-->
+    <node pkg="gary_bot" type="follower.py" name="object_follower" />
+    
+    <!--Start node multiplexer-->
+    <node pkg="gary_bot" type="topic_multiplexer.py" name="topic_multiplexer" />
+    
+    <!--Start serial port with Arduino-->
+    <node pkg="rosserial_python" type="serial_node.py" name="rosserial" args="/dev/ttyACM0">
+    	<param name="baud" value="57600" />
+    </node>
+    
+    <!--Start LiDAR sensor-->
+    <include file="$(find rplidar_ros)/launch/view_rplidar.launch">
+
+</launch>
