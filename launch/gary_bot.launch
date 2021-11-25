@@ -12,6 +12,6 @@
     </node>
     
     <!--Start LiDAR sensor-->
-    <include file="$(find rplidar_ros)/launch/view_rplidar.launch">
+    <include file="$(find rplidar_ros)/launch/view_rplidar.launch"/>
 
 </launch>
