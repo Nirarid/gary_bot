@@ -33,9 +33,9 @@ class Multiplexer():
         #Publish indicated message
         while not rospy.is_shutdown():
             if(self.mode == 0):
-                self.pub_cmd.publish(self.Ftwister)
-            elif(self.mode == 1):
                 self.pub_cmd.publish(self.Ttwister)
+            elif(self.mode == 1):
+                self.pub_cmd.publish(self.Ftwister)
             else:
                 self.pub_cmd.publish(self.Atwister)
             rate.sleep()
