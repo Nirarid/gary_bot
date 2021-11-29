@@ -45,24 +45,28 @@ class Multiplexer():
         self.Ftwister.angular.z = msg.angular.z
         self.Ftwister.linear.x = msg.linear.x
         
-    #Process received command from follower
+    #Process received command from teleoperated
     def teleop_msg_cb(self,msg):
         self.Ttwister.angular.z = msg.angular.z
         self.Ttwister.linear.x = msg.linear.x
     
-    #Process received command from follower
+    #Process received command from avoidance
     def avoid_msg_cb(self,msg):
         self.Atwister.angular.z = msg.angular.z
         self.Atwister.linear.x = msg.linear.x
     
-    #Process received command from follower
+    #Process received command from mode
     def mode_msg_cb(self,msg):
         self.mode = msg.data
     
     #Process node shutdown (called when node is killed)
     def terminate(self):
-        self.twister.linear.x = 0.0
-        self.twister.angular.z = 0.0
+        self.Ftwister.linear.x = 0.0
+        self.Ftwister.angular.z = 0.0
+        self.Ttwister.linear.x = 0.0
+        self.Ttwister.angular.z = 0.0
+        self.Atwister.linear.x = 0.0
+        self.Atwister.angular.z = 0.0
         rospy.loginfo("Terminating node...")
 
 
